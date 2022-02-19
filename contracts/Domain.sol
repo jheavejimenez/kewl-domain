@@ -24,7 +24,7 @@ contract Domains is ERC721URIStorage {
   mapping(string => address) public domains;
   mapping(string => string) public records;
 
-  constructor(string memory _tld) payable ERC721("Kewl Domains Name Service", "KDNS") {
+  constructor(string memory _tld) payable ERC721("Kewl Domain Name Service", "KDNS") {
     tld = _tld;
     console.log("%s name service deployed", _tld);
   }
@@ -88,8 +88,19 @@ contract Domains is ERC721URIStorage {
     _tokenIds.increment();
   }
 
-  // This will give us the domain owners' address
+  // This will give the domain owners' address
   function getAddress(string calldata name) public view returns (address) {
     return domains[name];
   }
+
+  function setRecord(string calldata name, string calldata record) public {
+    // Check that the owner is the transaction sender
+    require(domains[name] == msg.sender);
+    records[name] = record;
+  }
+
+  function getRecord(string calldata name) public view returns(string memory) {
+    return records[name];
+  }
+  
 }
