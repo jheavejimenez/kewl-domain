@@ -58,14 +58,14 @@ contract Domains is ERC721URIStorage {
 
     console.log("Registering %s.%s on the contract with tokenID %d", name, tld, newRecordId);
 
-		// Create the JSON metadata of our NFT. We do this by combining strings and encoding as base64
+		// Create the JSON metadata of NFT. by combining strings and encoding as base64
     string memory json = Base64.encode(
       bytes(
         string(
           abi.encodePacked(
             '{"name": "',
             _name,
-            '", "description": "A domain on the Ninja name service", "image": "data:image/svg+xml;base64,',
+            '", "description": "A domain on the Kewl Domains Name Service", "image": "data:image/svg+xml;base64,',
             Base64.encode(bytes(finalSvg)),
             '","length":"',
             strLen,
