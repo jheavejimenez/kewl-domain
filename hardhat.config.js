@@ -1,5 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
-
+require('dotenv').config();
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -21,7 +21,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   networks: {
 		mumbai: {
       url: "https://polygon-mumbai.g.alchemy.com/v2/vhnQYJ8UqrZB_g0NXX0Osn2FHU40wG8m",
-      accounts: env.WALLET_PRIVATE_KEY,
+      accounts: [process.env.WALLET_PRIVATE_KEY],
 		}
   }
 };
