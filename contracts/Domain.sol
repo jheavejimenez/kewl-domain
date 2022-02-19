@@ -6,26 +6,26 @@ import { StringUtils } from "./libraries/StringUtils.sol";
 import "hardhat/console.sol";
 
 contract Domains {
-  // Here's our domain TLD!
-  string public jhv;
+  // domain TLD(top-level domain)!
+  string public tld;
 
   mapping(string => address) public domains;
   mapping(string => string) public records;
 		
-  // We make the contract "payable" by adding this to the constructor
-  constructor(string memory _jhv) payable {
-    jhv = _jhv;
-    console.log("%s name service deployed", _jhv);
+  // make the contract "payable" by adding this to the constructor
+  constructor(string memory _tld) payable {
+    tld = _tld;
+    console.log("%s name service deployed", _tld);
   }
 		
-  // This function will give us the price of a domain based on length
+  // This function will give the price of a domain based on length
   function price(string calldata name) public pure returns(uint) {
     uint len = StringUtils.strlen(name);
     require(len > 0);
     if (len == 3) {
-      return 5 * 10**17; // 5 MATIC = 5 000 000 000 000 000 000 (18 decimals). We're going with 0.5 Matic cause the faucets don't give a lot
+      return 5 * 10**17; // 5 MATIC = 5 000 000 000 000 000 000 (18 decimals). This is 0.5 Matic
     } else if (len == 4) {
-      return 3 * 10**17; // To charge smaller amounts, reduce the decimals. This is 0.3
+      return 3 * 10**17; // To charge smaller amounts, reduce the decimals. This is 0.3 Matic
     } else {
       return 1 * 10**17;
     }
