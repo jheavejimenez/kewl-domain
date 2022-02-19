@@ -21,7 +21,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   networks: {
 		mumbai: {
       url: "https://polygon-mumbai.g.alchemy.com/v2/vhnQYJ8UqrZB_g0NXX0Osn2FHU40wG8m",
-      accounts: [YOUR_TEST_WALLET_PRIVATE_KEY],
+      accounts: env.WALLET_PRIVATE_KEY,
 		}
   }
 };
