@@ -24,7 +24,7 @@ contract Domains is ERC721URIStorage {
   mapping(string => address) public domains;
   mapping(string => string) public records;
 
-  constructor(string memory _tld) payable ERC721("Ninja Name Service", "NNS") {
+  constructor(string memory _tld) payable ERC721("Kewl Domains Name Service", "KDNS") {
     tld = _tld;
     console.log("%s name service deployed", _tld);
   }
