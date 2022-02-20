@@ -31,7 +31,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     //   accounts: [process.env.PRIVATE_KEY],
     // },
   },
-  mumbai: {
-    apiKey: process.env.API_KEY,
-  } 
+  etherscan: {
+    apiKey: {
+      polygonMumbai: process.env.API_KEY,
+    }
+  }, 
 };
